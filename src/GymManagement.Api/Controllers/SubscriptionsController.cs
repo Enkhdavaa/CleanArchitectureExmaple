@@ -1,4 +1,5 @@
-﻿using GymManagement.Contracts.Subscriptions;
+﻿using GymManagement.Application.Services;
+using GymManagement.Contracts.Subscriptions;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GymManagement.Api.Controllers;
@@ -7,9 +8,19 @@ namespace GymManagement.Api.Controllers;
 [Route("[controller]")]
 public class SubscriptionsController : ControllerBase
 {
+    public readonly ISubscriptionsService _subscriptionsService;
+
+    public SubscriptionsController(ISubscriptionsService subscriptionsService)
+    {
+        _subscriptionsService = subscriptionsService;
+    }
+
     [HttpPost]
     public IActionResult CreateSubscription(CreateSubscriptionRequest request)
     {
-        return Ok(request);
+        var subscriptionId = _subscriptionsService.CreateSubscription(request.SubscriptionType.ToString(), request.AdminId);
+        var response = new SubscriptionResponse(subscriptionId, request.SubscriptionType);
+
+        return Ok(response);
     }
 }
