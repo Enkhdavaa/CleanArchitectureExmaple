@@ -11,17 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GymManagement.Infrastructur
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GymManagement.Domain", "GymManagement.Domain\GymManagement.Domain.csproj", "{C2CF1F82-5C42-4D80-9E10-9C00AEE5068B}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "requests", "requests", "{06431057-C96D-48B1-AB70-61079E166CED}"
-	ProjectSection(SolutionItems) = preProject
-		foo.http = foo.http
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymManagement.Contracts", "GymManagement.Contracts\GymManagement.Contracts.csproj", "{7EACB518-F81D-4631-9451-451AD83A62F0}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Subscriptions", "Subscriptions", "{4DF3ED0C-7A21-4EAB-A82B-904D72F92372}"
-	ProjectSection(SolutionItems) = preProject
-		CreateSubscription.http = CreateSubscription.http
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -52,10 +42,7 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{4DF3ED0C-7A21-4EAB-A82B-904D72F92372} = {06431057-C96D-48B1-AB70-61079E166CED}
-	EndGlobalSection
+	EndGlobalSection	
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7C4D804F-C54E-4931-92C8-8263224ECF5B}
 	EndGlobalSection

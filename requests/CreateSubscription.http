@@ -1,4 +1,4 @@
-@host=https://localhost:7002
+@host=http://localhost:5051
 @adminId=86D7912E-B7DC-4EF8-A9CD-51CE19807023
 
 POST {{host}}/Subscriptions
