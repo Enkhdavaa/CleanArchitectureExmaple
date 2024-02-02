@@ -21,7 +21,8 @@ public class CreateSubscriptionCommandHandler : IRequestHandler<CreateSubscripti
         // Create a subscription
         var subscription = new Subscription
         {
-            Id = Guid.NewGuid()
+            Id = Guid.NewGuid(),
+            SubscriptionType = request.SubscriptionType
         };
         // Add it to the database
         await _subscriptionsRepository.AddSubscriptionAsync(subscription);
