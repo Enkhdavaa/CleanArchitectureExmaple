@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GymManagement.Infrastructure.Migrations
 {
     [DbContext(typeof(GymManagementDbContext))]
-    [Migration("20240203183957_InitialCreate")]
+    [Migration("20240210193136_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -23,12 +23,14 @@ namespace GymManagement.Infrastructure.Migrations
             modelBuilder.Entity("GymManagement.Domain.Subscriptions.Subscription", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("SubscriptionType")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+                    b.Property<int>("SubscriptionType")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<Guid>("_adminId")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("AdminId");
 
                     b.HasKey("Id");
 

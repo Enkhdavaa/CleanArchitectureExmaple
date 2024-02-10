@@ -17,10 +17,21 @@ public class SubscriptionsController : ControllerBase
         _mediator = mediator;
     }
 
+    // Shall translate API message to domain message
     [HttpPost]
     public async Task<IActionResult> CreateSubscription(CreateSubscriptionRequest request)
     {
-        var command = new CreateSubscriptionCommand(request.SubscriptionType.ToString(), request.AdminId);
+        if(!Domain.Subscriptions.SubscriptionType.TryFromName(request.SubscriptionType.ToString(), out var subscriptionType))
+        {
+            return Problem(
+                statusCode: StatusCodes.Status400BadRequest,
+                detail: "Invalid subscription type");
+        }
+
+        var command = new CreateSubscriptionCommand(
+            subscriptionType, 
+            request.AdminId);
+
         var createSubscriptionResult = await _mediator.Send(command);
 
         return createSubscriptionResult.MatchFirst(
@@ -39,7 +50,7 @@ public class SubscriptionsController : ControllerBase
         return getSubscriptionResult.MatchFirst(
             subscription => Ok(new SubscriptionResponse(
                 subscription.Id, 
-                Enum.Parse<SubscriptionType>(subscription.SubscriptionType))),
+                Enum.Parse<SubscriptionType>(subscription.SubscriptionType.Name))),
             error => Problem());
     }
 }
